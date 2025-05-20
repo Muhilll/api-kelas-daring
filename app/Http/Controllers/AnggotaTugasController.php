@@ -40,7 +40,7 @@ class AnggotaTugasController extends Controller
         } catch (Exception $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Failed: ' . $e,
+                'message' => 'Failed: ' . $e->getMessage(),
             ], Response::HTTP_BAD_REQUEST);
         }
     }
@@ -70,7 +70,7 @@ class AnggotaTugasController extends Controller
         } catch (Exception $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Failed: ' . $e,
+                'message' => 'Failed: ' . $e->getMessage(),
             ], Response::HTTP_BAD_REQUEST);
         }
     }

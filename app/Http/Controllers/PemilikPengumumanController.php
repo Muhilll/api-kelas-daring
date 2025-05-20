@@ -12,13 +12,23 @@ class PemilikPengumumanController extends Controller
 
     public function buatPengumuman(Request $request){
         try{
-            $dataInput = $request->validate([
+            $request->validate([
                 'id_kelas' => 'required',
                 'nama' => 'required',
                 'desk' => 'required',
             ]);
             
-            pengumuman::create($dataInput);
+            $filePath = null;
+            if ($request->hasFile('file')) {
+                $filePath = $request->file('file')->store('files', 'public');
+            }
+
+            pengumuman::create([
+                'id_kelas'=> $request->id_kelas,
+                'nama'=> $request->nama,
+                'desk'=> $request->desk,
+                'file'=> $filePath,
+            ]);
     
             return response()->json([
                 'success' => true,
@@ -27,7 +37,7 @@ class PemilikPengumumanController extends Controller
         }catch(Exception $e){
             return response()->json([
                 'success' => false,
-                'message' => 'Failed: '.$e,
+                'message' => 'Failed: '.$e->getMessage(),
             ], Response::HTTP_BAD_REQUEST);
         }
     }
@@ -93,6 +103,10 @@ class PemilikPengumumanController extends Controller
             if($edit){
                 $edit->nama = $dataInput['nama'];
                 $edit->desk = $dataInput['desk'];
+                if($request->hasFile('file')){
+                    $filePath = $request->file('file')->store('files', 'public');
+                    $edit->file = $filePath;
+                }
                 $edit->save();
 
                 return response()->json([
@@ -108,7 +122,7 @@ class PemilikPengumumanController extends Controller
         }catch(Exception $e){
             return response()->json([
                 'success' => false,
-                'message' => 'Failed: '.$e,
+                'message' => 'Failed: '.$e->getMessage(),
             ], Response::HTTP_BAD_REQUEST);
         }
     }

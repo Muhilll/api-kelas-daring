@@ -47,6 +47,7 @@ Route::get('/get-pengumuman-detail', [PemilikPengumumanController::class, 'getDe
 Route::post('/edit-pengumuman', [PemilikPengumumanController::class, 'editPengumuman']);
 Route::delete('/hapus-pengumuman', [PemilikPengumumanController::class, 'hapusPengumuman']);
 Route::get('/pemilik/get-agt', [PemilikAgtController::class, 'getDataAgt']);
+Route::get('/pemilik/get-user', [PemilikAgtController::class, 'getUser']);
 Route::delete('/pemilik/hapus-agt', [PemilikAgtController::class, 'hapusAgt']);
 Route::get('pemilik/get-tugas', [PemilikTugasController::class, 'getDataTugas']);
 Route::post('/buat-tugas', [PemilikTugasController::class, 'buatTugas']);
@@ -55,7 +56,6 @@ Route::get('pemilik/download-tugas', [PemilikTugasController::class, 'downloadTu
 Route::post('pemilik/buat-absensi', [PemilikAbsensi::class, 'buatAbsen']);
 Route::get('pemilik/get-absensi', [PemilikAbsensi::class, 'getDataAbsensi']);
 Route::get('pemilik/get-kehadiran', [PemilikAbsensi::class, 'getDataKehadiran']);
-
 
 Route::get('/anggota/get-kelas',[AnggotaKelasController::class, 'getDataKelas']);
 Route::get('/get-pemilik-kelas', [AnggotaKelasController::class, 'getPemilikKelas']);

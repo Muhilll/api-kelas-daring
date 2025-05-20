@@ -56,6 +56,15 @@ class UserController extends Controller
                 'password' => 'required'
             ]);
 
+            $user = User::where('nim', $dataInput['nim'])->first();
+
+            if($user){
+                return response()->json([
+                    'success' => false,
+                    'message' => 'User dengan NIM '.$dataInput['nim'].' sudah ada',
+                ], Response::HTTP_BAD_REQUEST);
+            }
+
             User::create($dataInput);
 
             return response()->json([
@@ -65,7 +74,7 @@ class UserController extends Controller
         } catch (Exception $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Signup failed: ' . $e,
+                'message' => 'Signup failed: ' . $e->getMessage(),
             ], Response::HTTP_BAD_REQUEST);
         }
     }
@@ -124,7 +133,7 @@ class UserController extends Controller
         } catch (Exception $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Failed: ' . $e,
+                'message' => 'Failed: ' . $e->getMessage(),
             ], Response::HTTP_BAD_REQUEST);
         }
     }
@@ -185,7 +194,7 @@ class UserController extends Controller
         } catch (Exception $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Edit failed: ' . $e,
+                'message' => 'Edit failed: ' . $e->getMessage(),
             ], Response::HTTP_BAD_REQUEST);
         }
     }

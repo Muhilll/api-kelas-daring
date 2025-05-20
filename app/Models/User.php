@@ -25,4 +25,10 @@ class User extends Model
     {
         $this->attributes['password'] = Hash::make($value);
     }
+
+    public function kelasDiikuti()
+    {
+        return $this->belongsToMany(kelas::class, 'agt_kelas', 'id_user', 'id_kelas');
+    }
+
 }

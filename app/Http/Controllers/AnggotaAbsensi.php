@@ -28,7 +28,7 @@ class AnggotaAbsensi extends Controller
         } catch (Exception $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Failed: ' . $e,
+                'message' => 'Failed: ' . $e->getMessage(),
             ], Response::HTTP_BAD_REQUEST);
         }
     }
@@ -49,12 +49,12 @@ class AnggotaAbsensi extends Controller
             return response()->json([
                 'success' => true,
                 'sudah_absen' => $ada
-            ], 200);
+            ], Response::HTTP_OK);
         } catch (Exception $e) {
             return response()->json([
                 'success' => false,
                 'message' => $e->getMessage()
-            ], 400);
+            ], Response::HTTP_BAD_REQUEST);
         }
     }
 
@@ -76,7 +76,7 @@ class AnggotaAbsensi extends Controller
         } catch (Exception $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Failed: ' . $e,
+                'message' => 'Failed: ' . $e->getMessage(),
             ], Response::HTTP_BAD_REQUEST);
         }
     }

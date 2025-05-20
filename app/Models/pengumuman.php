@@ -11,6 +11,7 @@ class pengumuman extends Model
     protected $fillable = [
         'id_kelas',
         'nama',
-        'desk'
+        'desk',
+        'file'
     ];
 }

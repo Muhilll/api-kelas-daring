@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('id_kelas');
             $table->string('nama');
             $table->string('desk');
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }
