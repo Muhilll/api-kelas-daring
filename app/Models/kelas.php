@@ -26,5 +26,10 @@ class kelas extends Model
     {
         return $this->belongsToMany(User::class, 'agt_kelas', 'id_kelas', 'id_user');
     }
+    
+    public function pemilik()
+    {
+        return $this->belongsTo(User::class, 'id_user', 'id');
+    }
 
 }

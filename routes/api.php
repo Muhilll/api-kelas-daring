@@ -47,6 +47,8 @@ Route::get('/get-pengumuman-detail', [PemilikPengumumanController::class, 'getDe
 Route::post('/edit-pengumuman', [PemilikPengumumanController::class, 'editPengumuman']);
 Route::delete('/hapus-pengumuman', [PemilikPengumumanController::class, 'hapusPengumuman']);
 Route::get('/pemilik/get-agt', [PemilikAgtController::class, 'getDataAgt']);
+Route::get('/pemilik/get-user/nim', [PemilikAgtController::class, 'getUserByNim']);
+Route::post('/pemilik/tmbh-agt', [PemilikAgtController::class, 'tmbhAgt']);
 Route::get('/pemilik/get-user', [PemilikAgtController::class, 'getUser']);
 Route::delete('/pemilik/hapus-agt', [PemilikAgtController::class, 'hapusAgt']);
 Route::get('pemilik/get-tugas', [PemilikTugasController::class, 'getDataTugas']);

@@ -31,4 +31,8 @@ class User extends Model
         return $this->belongsToMany(kelas::class, 'agt_kelas', 'id_user', 'id_kelas');
     }
 
+    public function kelasPemilik()
+    {
+        return $this->hasMany(kelas::class, 'id_user', 'id');
+    }
 }
