@@ -79,6 +79,23 @@ class UserController extends Controller
         }
     }
 
+    public function getDataKelasForGuest(Request $request)
+    {
+        try {
+            $dataKelas = Kelas::all();
+            return response()->json([
+                'success' => true,
+                'message' => 'Successfull',
+                'data' => $dataKelas
+            ], Response::HTTP_OK);
+        } catch (Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed: ' . $e->getMessage(),
+            ], Response::HTTP_BAD_REQUEST);
+        }
+    }
+
     public function getDataKelas(Request $request)
     {
 

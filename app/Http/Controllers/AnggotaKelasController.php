@@ -78,4 +78,25 @@ class AnggotaKelasController extends Controller
             ], Response::HTTP_BAD_REQUEST);
         }
     }
+
+    public function outKelas(Request $request){
+        try{
+            $request->validate([
+                'id_kelas' => 'required',
+                'id_user' => 'required'
+            ]);
+
+            $agt = agt_kelas::where('id_kelas', $request->id_kelas)->where('id_user', $request->id_user)->first();
+            $agt->delete();
+            return response()->json([
+                'success' => true,
+                'message' => 'Successfull',
+            ], Response::HTTP_OK);
+        }catch(Exception $e){
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed: ' . $e->getMessage(),
+            ], Response::HTTP_BAD_REQUEST);
+        }
+    }
 }

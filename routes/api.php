@@ -30,7 +30,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
-
+Route::get('guest/get-kelas', [UserController::class, 'getDataKelasForGuest']);
 Route::get('user/get-kelas', [UserController::class, 'getDataKelas']);
 Route::get('user/get-profil', [UserController::class, 'getDataUser']);
 Route::post('user/edit-profil', [UserController::class, 'editUser']);
@@ -62,6 +62,7 @@ Route::get('pemilik/get-kehadiran', [PemilikAbsensi::class, 'getDataKehadiran'])
 Route::get('/anggota/get-kelas',[AnggotaKelasController::class, 'getDataKelas']);
 Route::get('/get-pemilik-kelas', [AnggotaKelasController::class, 'getPemilikKelas']);
 Route::post('/get-data-agtkelas', [AnggotaKelasController::class, 'getDataAgtKelas']);
+Route::post('/out-kelas', [AnggotaKelasController::class, 'outKelas']);
 Route::get('anggota/get-absensi', [AnggotaAbsensi::class, 'getAbsensi']);
 Route::post('anggota/cek-kehadiran', [AnggotaAbsensi::class, 'cekKehadiran']);
 Route::post('/submit-kehadiran', [AnggotaAbsensi::class, 'submitKehadiran']);
